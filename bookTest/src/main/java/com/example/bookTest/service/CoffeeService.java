@@ -28,4 +28,11 @@ public class CoffeeService {
 		}
 	}
 	
+	public CoffeeDto getCoffee(int id) {
+		if(id != 0) {
+			return coffeeDao.findId(id);
+		}
+		return null;
+	}
+	
 }

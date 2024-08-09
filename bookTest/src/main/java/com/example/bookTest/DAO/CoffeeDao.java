@@ -21,6 +21,23 @@ public class CoffeeDao {
 		this.jt = jdbcTemplate;
 	}
 	
+	public CoffeeDto findId(int id) {
+		String sql = "select * from coffee where coffee_id=?";
+		CoffeeDto data = jt.queryForObject(sql,
+				new RowMapper<CoffeeDto>() {
+					@Override
+					public CoffeeDto mapRow(ResultSet rs, int rowNum) throws SQLException {
+						CoffeeDto coffeeDto = new CoffeeDto();
+						coffeeDto.setCoffeeId(rs.getInt("coffee_id"));
+						coffeeDto.setItemName(rs.getString("item_name"));
+						coffeeDto.setPrice(rs.getInt("price"));
+						coffeeDto.setDecaffein(rs.getString("decaffein"));
+						return coffeeDto;
+					}
+				}, id);
+		return data;
+	}
+	
 	public List<CoffeeDto> select(){
 		String sql = "select * from coffee";
 		List<CoffeeDto> list = jt.query(sql, new CoffeeDtoRowMapper());

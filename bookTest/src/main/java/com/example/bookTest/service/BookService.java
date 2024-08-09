@@ -31,4 +31,12 @@ public class BookService {
 		}
 	}
 	
+	// 도서 상세정보 가져오기 - id 파라미터 값 DAO에 넘겨서 조회하고 결과 받아서 controller에 넘기기
+	public LibraryDto getBook(int id) {
+		if(id != 0) {  // id 파라미터의 값이 존재한다면 DAO를 통해 조회
+			return bookDao.findId(id);
+		}
+		return null;  // id 파라미터 없이 /book/view 주소 요청 들어온다면 null값 반환
+	}
+	
 }
