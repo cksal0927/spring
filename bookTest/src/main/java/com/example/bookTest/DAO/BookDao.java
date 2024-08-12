@@ -21,6 +21,12 @@ public class BookDao {
 		this.jt = jdbcTemplate;
 	}
 	
+	// 도서 삭제
+	public void delete(int bid) {
+		String sql = "delete from book where book_id=?";
+		jt.update(sql, bid);
+	}
+	
 	// 도서 상세 정보 가져오기 - 한 권에 대해서만! (book_id 칼럼으로 조회)
 	// book_id 칼럼이 중복 데이터를 가질 수 없는 유일값이기 때문
 	public LibraryDto findId(int id) {
@@ -68,6 +74,13 @@ public class BookDao {
 			libraryDto.setBookId(rs.getInt("book_id"));
 			return libraryDto;
 		}
+	}
+	
+	// 수정 도서의 정보를 데이터베이스에 수정하여 저장하기
+	public void update(LibraryDto libraryDto) {
+		String sql = "update book set book_title=?, book_author=?, book_price=?, book_page=?, publisher=? where book_id=?";
+		jt.update(sql, libraryDto.getBookTitle(), libraryDto.getBookAuthor(), libraryDto.getBookPrice(),
+				libraryDto.getBookPage(), libraryDto.getPublisher(), libraryDto.getBookId());
 	}
 	
 }

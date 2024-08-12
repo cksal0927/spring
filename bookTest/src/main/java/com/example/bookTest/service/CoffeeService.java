@@ -18,6 +18,10 @@ public class CoffeeService {
 		this.coffeeDao = coffeeDao;
 	}
 	
+	public void remove(int bid) {
+		coffeeDao.delete(bid);
+	}
+	
 	public List<CoffeeDto> selectAll(){
 		return coffeeDao.select();
 	}
@@ -33,6 +37,10 @@ public class CoffeeService {
 			return coffeeDao.findId(id);
 		}
 		return null;
+	}
+	
+	public void update(CoffeeDto coffeeDto) {
+		coffeeDao.update(coffeeDto);
 	}
 	
 }

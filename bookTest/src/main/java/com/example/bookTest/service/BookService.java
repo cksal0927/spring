@@ -18,6 +18,11 @@ public class BookService {
 		this.bookDao = bookDao;
 	}
 	
+	// 도서 삭제
+	public void remove(int bid) {
+		bookDao.delete(bid);
+	}
+	
 	// 도서 정보 전체 데이터베이스에서 가져와서 List에 저장되어 있는 것 받아서 controller에 넘겨주기
 	public List<LibraryDto> selectAll(){
 		return bookDao.select();
@@ -37,6 +42,10 @@ public class BookService {
 			return bookDao.findId(id);
 		}
 		return null;  // id 파라미터 없이 /book/view 주소 요청 들어온다면 null값 반환
+	}
+	
+	public void update(LibraryDto libraryDto) {
+		bookDao.update(libraryDto);
 	}
 	
 }

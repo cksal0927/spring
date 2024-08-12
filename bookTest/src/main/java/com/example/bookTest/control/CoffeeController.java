@@ -46,4 +46,17 @@ public class CoffeeController {
 		return new ModelAndView("/coffee/view").addObject("coffee", data);
 	}
 	
+	@GetMapping("coffee/delete")
+	public String coffeeRemove(@RequestParam("id") int bid) {
+		coffeeService.remove(bid);
+		return "redirect:/coffee";
+	}
+	
+	@GetMapping("/coffee/update")
+	public String coffeeUpdate(@ModelAttribute CoffeeDto coffeeDto, @RequestParam("id") int id) {
+		coffeeDto.setCoffeeId(id);
+		coffeeService.update(coffeeDto);
+		return "redirect:/coffee/view?id="+id;
+	}
+	
 }

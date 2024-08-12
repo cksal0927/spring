@@ -21,6 +21,12 @@ public class CoffeeDao {
 		this.jt = jdbcTemplate;
 	}
 	
+	// 삭제
+	public void delete(int bid) {
+		String sql = "delete from coffee where coffee_id=?";
+		jt.update(sql, bid);
+	}
+	
 	public CoffeeDto findId(int id) {
 		String sql = "select * from coffee where coffee_id=?";
 		CoffeeDto data = jt.queryForObject(sql,
@@ -59,6 +65,11 @@ public class CoffeeDao {
 			coffeeDto.setDecaffein(rs.getString("decaffein"));
 			return coffeeDto;
 		}
+	}
+	
+	public void update(CoffeeDto coffeeDto) {
+		String sql = "update coffee set item_name=?, price=?, decaffein=? where coffee_id=?";
+		jt.update(sql, coffeeDto.getItemName(), coffeeDto.getPrice(), coffeeDto.getDecaffein(), coffeeDto.getCoffeeId());
 	}
 
 }

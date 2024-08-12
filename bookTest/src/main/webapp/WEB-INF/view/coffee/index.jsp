@@ -28,7 +28,7 @@
 					<li class="blist">
 						<span class="itemName"><a href="/coffee/view?=${row.coffeeId }">${row.itemName }</a></span>
 						<span class="price">${row.price }</span>
-						<span class="decaffein">${row.decaffein }</span>
+						<span class="decaffein">${row.decaffein? '디카페인' : '' }</span>
 					</li>
 				</c:forEach>
 				
