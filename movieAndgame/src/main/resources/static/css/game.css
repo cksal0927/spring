@@ -1,5 +1,12 @@
 @charset "UTF-8";
 
+#userALogo .logo{
+	background: url(/image/gamelogo.jfif) no-repeat center;
+	background-size: cover;
+	height: 50px;
+	width: 200px;
+	cursor: pointer;
+}
 *{
 	padding:0;
 	margin:0;
@@ -28,7 +35,7 @@ a{ color:inherit;  text-decoration: none;}
 	width:650px; display:flex;
 }
 #menuList li{  
-	padding:0 50px;
+	padding:0 40px;
 	transition: 0.5s;
 	overflow: hidden;
 	position:relative;
@@ -46,9 +53,4 @@ a{ color:inherit;  text-decoration: none;}
 #userALogo{
 	width:350px; display:flex;
 	justify-content: space-between; height:50px; align-items:center;
-}
-#userALogo .logo{
-	background:url(/image/logo.jpg) no-repeat center;
-	background-size:cover;
-	width:200px;  cursor:pointer;height:50px;
 }
